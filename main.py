@@ -23,39 +23,49 @@ class Chemin():
 
     def play(self):
 
+        punter_hits = False
+
         hand = self._deal()
         banker_deal = hand[:3]
         punter_deal = hand[3:]
+
+        banker1 = int(str(banker_deal[:2].sum())[-1])
+        punter1 = int(str(punter_deal[:2].sum())[-1])
+
+        banker2 = int(str(banker1 + banker_deal[-1])[-1])
+        punter2 = int(str(punter1 + punter_deal[-1])[-1])
+
         print('Banker:', banker_deal)
         print('Punter:', punter_deal)
 
-        banker = int(str(banker_deal[:2].sum())[-1])
-        punter = int(str(punter_deal[:2].sum())[-1])
+        print('Initial Banker hand:', banker1)
+        print('Initial Punter hand:', punter1)
 
-        banker2 += banker_deal[-1]
-        banker2 = int(str(banker2)[-1])
-        punter2 += punter_deal[-1]
-        punter2 = int(str(punter2)[-1])
+        print('Second Banker hand:', banker2)
+        print('Second Punter hand:', punter2)
 
-        print('Initial Banker hand:', banker)
-        print('Initial Punter hand:', punter)
+        result = 'Banker: {} vs Punter: {}\n{{}} wins'.format(banker1,
+                                                              punter1)
 
-        result = 'Banker: {} vs Punter: {}\n{{}} wins'.format(banker,
-                                                              punter)
-
-        if banker > 7 or punter > 7:
-            if banker > punter:
+        if banker1 > 7 or punter1 > 7:
+            if banker1 > punter1:
                 print(result.format('Banker'))
-            elif banker < punter:
+            elif banker1 < punter1:
                 print(result.format('Punter'))
             else:
                 print(result.format('Nobody'))
         else:
-            if punter < 5:
-                punter = punter2
-            elif punter == 5:
-                if npr.random(1) > 0.220504:
-                    punter = punter2
+            if punter1 < 6:
+                # Player hits
+                punter1 = punter2
+                if banker1
+                    pass
+            else:
+                # Player stands
+                if banker1 < 6:
+                    banker1 = banker2
+
+
 
 c = Chemin()
 c.play()
